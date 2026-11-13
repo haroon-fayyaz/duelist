@@ -1,0 +1,293 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import FAQ, { type FaqItem } from '../components/FAQ.astro';
+
+const faqs: FaqItem[] = [
+  {
+    question: 'Why are my totals shown separately for each currency?',
+    answer:
+      'Renewal Keeper never converts money on its own. Each currency has its own monthly and yearly total, so PKR and USD are never added together by accident. A combined total appears only after you enter how many home-currency units equal one unit of another currency in Settings, or turn on live exchange rates there.',
+  },
+  {
+    question: 'How is the monthly amount calculated?',
+    answer:
+      'Monthly items count as the price divided by the number of months in the cycle. Yearly items are the price divided by twelve. Weekly and daily items use an average of 365.25 days per 12 months. Yearly total is the monthly sum multiplied by twelve, rounded once to the currency’s smallest unit.',
+  },
+  {
+    question: 'How is the next renewal date worked out?',
+    answer:
+      'The app starts from the renewal date you entered and steps forward by the billing cycle until it reaches the first date on or after today. For a monthly item that starts on the 31st, months with fewer days use their last day, so 31 January becomes 28 February (or 29 February in a leap year).',
+  },
+  {
+    question: 'Why didn’t I get a reminder?',
+    answer:
+      'Check these first: notifications are allowed for Renewal Keeper in your phone’s settings; the reminder time and lead time in Settings are what you expect (the defaults are 09:00 and 3 days before); and the item has a renewal date within the lead window. Some phone makers pause background work to save battery. If that happens, open the app: it catches up on any reminders that were missed.',
+  },
+  {
+    question: 'How do free trial reminders work?',
+    answer:
+      'Turn on “This is a free trial” when you add or edit an item and set the trial end date. The app sends a reminder the day before the trial ends and another on the day it ends. Each one is sent once.',
+  },
+  {
+    question: 'How do I mark a subscription as cancelled, or bring it back?',
+    answer:
+      'Open the item and choose Mark as cancelled. It stays in your list, and you can find it under the Cancelled filter. To bring it back, open it again and reactivate it. Cancelling in the app does not cancel the subscription with the provider. You still need to do that in the provider’s own app or website.',
+  },
+  {
+    question: 'Does Renewal Keeper cancel subscriptions or pay bills for me?',
+    answer:
+      'No. It is a list and a reminder tool. It does not connect to your bank, card, or any service account, and it does not read your SMS or email.',
+  },
+  {
+    question: 'Can I use my list on two phones?',
+    answer:
+      'There is no cloud sync. To move your list, create a backup file from Settings on the old phone, copy it to the new phone, and use Restore from file. Read the restore screen before you confirm.',
+  },
+  {
+    question: 'Is my backup encrypted?',
+    answer:
+      'No. A backup is a plain JSON file, and anyone who has the file can read it. Store it somewhere you trust, and delete copies you no longer need. Android Auto Backup may also copy the app’s database to your own Google account, controlled by your Google account settings.',
+  },
+  {
+    question: 'What happens when a backup cannot be restored?',
+    answer:
+      'If the file cannot be read, the app says so and your list is not changed. If the backup came from a newer version of Renewal Keeper, update the app first and try again. If the app says the file is too large to import, restore the backup file you created from Settings instead.',
+  },
+  {
+    question: 'How do I add an item to my calendar?',
+    answer:
+      'Go to Settings and choose Export to calendar (.ics). The app creates a calendar file and opens the share sheet, so you can choose the calendar app you use. Calendar export does not depend on notifications, and the file is not uploaded anywhere by the app.',
+  },
+  {
+    question: 'How do I delete all my data?',
+    answer:
+      'Go to Settings and choose Delete all data. This removes the list on your phone and any pending reminders. Uninstalling the app also removes its local database. Backup files you saved elsewhere are not deleted, so remove those yourself.',
+  },
+  {
+    question: 'Is anonymous usage data collected?',
+    answer:
+      'Not unless you turn it on. Anonymous usage stats are off by default and can be switched on or off in Settings. When they are on, they never include names, amounts, notes, or account identifiers. See the <a href="/privacy-policy#analytics">privacy policy</a> for the full list.',
+  },
+  {
+    question: 'Does the app have a home-screen widget, app lock, or Urdu?',
+    answer:
+      'Yes. The home-screen widget shows what is coming up. Biometric lock uses your phone’s own fingerprint, face unlock, or screen lock, and Renewal Keeper does not store a separate PIN. The app includes an Urdu translation.',
+  },
+];
+
+const troubleshooting = [
+  {
+    title: 'Reminders arrive late or not at all',
+    steps: [
+      'Allow notifications for Renewal Keeper in your phone’s app settings.',
+      'Check that battery optimisation or background restrictions are not set to block Renewal Keeper. Search your phone’s settings for “battery” and “background” to find them.',
+      'Open the app once. Any missed reminders are caught up when it opens.',
+    ],
+  },
+  {
+    title: 'A total looks wrong',
+    steps: [
+      'Confirm the currency and billing cycle of each item. A weekly item counts differently from a monthly one.',
+      'Remember that each currency has its own total. A combined total needs your own rate or live rates in Settings.',
+      'Check the next renewal date. A date in the past moves forward to the next occurrence.',
+    ],
+  },
+  {
+    title: 'A backup file will not restore',
+    steps: [
+      'Make sure the file is the .json backup created by Renewal Keeper, not a copy of a different file type.',
+      'If the message says the backup is from a newer version, update the app and try again.',
+      'Your current list is left unchanged when a restore fails, so you can try again with another file.',
+    ],
+  },
+  {
+    title: 'A calendar file does not import',
+    steps: [
+      'Use Export to calendar (.ics) in Settings, then choose a calendar app from the share sheet.',
+      'Some calendar apps only accept imports through their own menu. Check that app’s import option.',
+    ],
+  },
+];
+
+const tips = [
+  'Add items with the currency they are billed in. Each currency gets its own total, which keeps the numbers honest.',
+  'Mark a free trial as soon as you start it, so you get the reminder before the first charge.',
+  'Set the reminder lead time to the number of days you need to act before a renewal. Adjust it per item if one needs more time.',
+  'Create a backup before you change phones, and keep a copy somewhere safe. Remember that the file is not encrypted.',
+  'Use Mark as cancelled rather than deleting an item. You keep its record and can reactivate it later.',
+];
+---
+
+<MainLayout
+  title="Support · Renewal Keeper"
+  description="Help for Renewal Keeper: getting started, reminders, backups, calendar export, troubleshooting, and frequently asked questions."
+>
+  <PageHeader
+    eyebrow="Support"
+    title="Help for Renewal Keeper"
+    lead="Answers, setup steps, and troubleshooting for the Android app. The answers below cover the app as it is today."
+    id="support-title"
+  >
+  </PageHeader>
+
+  <section class="section" aria-labelledby="resources-title">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Help resources</p>
+        <h2 id="resources-title">Start with the topic you need.</h2>
+      </div>
+      <div class="resource-grid">
+        <a class="card resource" href="#getting-started">
+          <h3>Getting started</h3>
+          <p>Add your first item, read the overview, and understand the totals.</p>
+        </a>
+        <a class="card resource" href="#faq">
+          <h3>Frequently asked questions</h3>
+          <p>Short answers about totals, renewals, trials, backups, and privacy.</p>
+        </a>
+        <a class="card resource" href="#troubleshooting">
+          <h3>Troubleshooting</h3>
+          <p>Steps for missing reminders, unexpected totals, and backups that will not restore.</p>
+        </a>
+        <a class="card resource" href="#tips">
+          <h3>Tips</h3>
+          <p>Habits that keep your list accurate and your reminders useful.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="getting-started" aria-labelledby="start-title">
+    <div class="container prose">
+      <p class="eyebrow">Getting started</p>
+      <h2 id="start-title">Add your first item</h2>
+      <ol class="numbered">
+        <li>Open the <strong>Subscriptions</strong> tab, then tap the <strong>+</strong> button.</li>
+        <li>Enter a <strong>name</strong> and the <strong>amount</strong>. Choose the <strong>currency</strong> the charge is billed in.</li>
+        <li>Choose the <strong>billing cycle</strong>: weekly, monthly, quarterly, yearly, or custom.</li>
+        <li>Set the <strong>next renewal date</strong>. Turn on <strong>This is a free trial</strong> if it is one, and set the trial end date.</li>
+        <li>Choose a <strong>payment method</strong> label if you want one, then save.</li>
+      </ol>
+      <p>The <strong>Overview</strong> tab then shows monthly and yearly totals for each currency and the list of renewals due this week. The <strong>Settings</strong> tab holds reminder timing, calendar export, backup and restore, and data controls.</p>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container prose">
+      <p class="eyebrow">FAQ</p>
+      <h2 id="faq-title">Frequently asked questions</h2>
+      <p>Select a question to read its answer.</p>
+      <FAQ items={faqs} idPrefix="faq" />
+    </div>
+  </section>
+
+  <section class="section section--alt" id="troubleshooting" aria-labelledby="trouble-title">
+    <div class="container prose">
+      <p class="eyebrow">Troubleshooting</p>
+      <h2 id="trouble-title">Fix a problem step by step</h2>
+      <div class="trouble-list">
+        {troubleshooting.map((item) => (
+          <article class="card trouble">
+            <h3>{item.title}</h3>
+            <ol>
+              {item.steps.map((step) => <li>{step}</li>)}
+            </ol>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tips" aria-labelledby="tips-title">
+    <div class="container prose">
+      <p class="eyebrow">Usage tips</p>
+      <h2 id="tips-title">Habits that keep the list useful</h2>
+      <ul class="tips">
+        {tips.map((tip) => <li>{tip}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-labelledby="privacy-note-title">
+    <div class="container prose">
+      <h2 id="privacy-note-title">Your privacy while you get help</h2>
+      <p>Renewal Keeper stores your list on this device and does not run an account system. This page does not ask for personal information, and it has no forms. Read the <a href="/privacy-policy">privacy policy</a> for what the app does and does not send.</p>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .support-notice {
+    margin-top: 1.5rem;
+    max-width: 46rem;
+  }
+
+  .resource-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .resource {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: box-shadow 0.25s var(--ease), border-color 0.25s var(--ease), transform 0.25s var(--ease);
+  }
+
+  .resource:hover {
+    box-shadow: var(--shadow-md);
+    border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+    transform: translateY(-2px);
+  }
+
+  .resource h3 {
+    color: var(--ink);
+  }
+
+  .resource p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .numbered,
+  .trouble ol {
+    padding-left: 1.4rem;
+  }
+
+  .numbered li + li,
+  .tips li + li,
+  .trouble ol li + li {
+    margin-top: 0.5rem;
+  }
+
+  .trouble-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .trouble h3 {
+    margin-bottom: 0.6rem;
+  }
+
+  .trouble ol {
+    margin-bottom: 0;
+  }
+
+  .tips {
+    padding-left: 1.25rem;
+  }
+
+  @media (max-width: 960px) {
+    .resource-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

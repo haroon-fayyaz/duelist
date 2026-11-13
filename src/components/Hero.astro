@@ -1,0 +1,100 @@
+---
+---
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Private subscription tracker</p>
+      <h1>Keep every renewal in view.</h1>
+      <p class="lead">
+        Renewal Keeper tracks subscriptions, bills, and free trials on your phone. It warns you before
+        they renew and shows what you pay each month and each year, kept separate for every currency,
+        including PKR.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="/#get-app">Get the app</a>
+        <a class="btn btn--ghost" href="/#features">See what it does</a>
+      </div>
+      <p class="trust">No account. No bank access. Your subscription list is never sent to us.</p>
+    </div>
+
+    <div class="hero-visual" aria-hidden="false">
+      <div class="device">
+        <img
+          src="/images/overview.png"
+          width="720"
+          height="1600"
+          alt="Renewal Keeper Overview screen showing PKR and USD monthly totals, a trial ending in two days, and the list of renewals due this week."
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: clamp(2.5rem, 1.5rem + 4vw, 5.5rem) clamp(3rem, 2rem + 4vw, 6rem);
+    overflow: hidden;
+    background:
+      radial-gradient(60rem 28rem at 85% -10%, color-mix(in srgb, var(--primary) 14%, transparent), transparent 70%),
+      var(--bg);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  }
+
+  .hero-copy .lead {
+    margin-bottom: 2rem;
+  }
+
+  .trust {
+    margin: 1.5rem 0 0;
+    font-size: 0.9rem;
+    color: var(--subtle);
+  }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .device {
+    width: min(20rem, 100%);
+    padding: 0.6rem;
+    border-radius: 2.4rem;
+    background: linear-gradient(160deg, #2a3431, #0c100f);
+    box-shadow: var(--shadow-lg);
+    transform: rotate(-1.5deg);
+  }
+
+  .device img {
+    width: 100%;
+    height: auto;
+    border-radius: 1.9rem;
+    aspect-ratio: 720 / 1600;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  @media (max-width: 880px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+      order: 2;
+    }
+
+    .device {
+      width: min(18rem, 80%);
+      transform: none;
+    }
+  }
+</style>

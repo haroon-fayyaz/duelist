@@ -1,0 +1,392 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const sections = [
+  { id: 'introduction', title: 'Introduction' },
+  { id: 'information-we-collect', title: 'Information We Collect' },
+  { id: 'personal-information', title: 'Personal Information' },
+  { id: 'automatically-collected', title: 'Automatically Collected Information' },
+  { id: 'how-we-use', title: 'How We Use Information' },
+  { id: 'storage-and-security', title: 'Data Storage and Security' },
+  { id: 'cookies-and-tracking', title: 'Cookies and Tracking' },
+  { id: 'third-party-services', title: 'Third-Party Services' },
+  { id: 'data-sharing', title: 'Data Sharing' },
+  { id: 'data-retention', title: 'Data Retention' },
+  { id: 'user-privacy-rights', title: 'User Privacy Rights' },
+  { id: 'international-transfers', title: 'International Data Transfers' },
+  { id: 'children', title: 'Children' },
+  { id: 'policy-changes', title: 'Policy Changes' },
+];
+
+const analyticsEvents = [
+  'onboarding completed',
+  'subscription add started',
+  'subscription saved',
+  'subscription save failed',
+  'subscription deleted',
+  'notification permission result',
+  'reminder opened',
+  'calendar export completed',
+  'backup export completed',
+  'backup import completed',
+  'backup import failed',
+];
+---
+
+<MainLayout
+  title="Privacy Policy · Renewal Keeper"
+  description="How Renewal Keeper handles your subscription list, optional anonymous analytics, backups, live exchange rates, and reminders. No account, no bank access."
+>
+  <PageHeader
+    eyebrow="Legal"
+    title="Privacy Policy"
+    lead="No account. No bank access. Your subscription list is never sent to us."
+    id="privacy-title"
+  >
+    <p class="policy-meta">
+      <span>Last updated: <strong>14 November 2026</strong></span>
+    </p>
+  </PageHeader>
+
+  <section class="section policy-section" aria-label="Policy contents">
+    <div class="container layout">
+      <nav class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title">Contents</h2>
+        <ol>
+          {sections.map((section, index) => (
+            <li>
+              <a href={`#${section.id}`}><span class="toc-num">{index + 1}</span>{section.title}</a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <article class="policy">
+        <section id="introduction" aria-labelledby="introduction-title">
+          <h2 id="introduction-title">1. Introduction</h2>
+          <p>
+            This Privacy Policy explains what information Renewal Keeper (the “app”) handles, where it is kept, and the
+            choices you have. It covers the Android app and the website at this address. It is operated by
+            TactileLogic.
+          </p>
+          <p>
+            Renewal Keeper is a local-first app for tracking subscriptions, bills, and free trials. Your list is kept on
+            your device. The app does not have an account system, and it does not connect to your bank.
+          </p>
+        </section>
+
+        <section id="information-we-collect" aria-labelledby="information-we-collect-title">
+          <h2 id="information-we-collect-title">2. Information We Collect</h2>
+          <p>
+            The app collects information in two ways: information you type or choose, which stays on your device, and
+            a small set of optional, anonymous usage events that are off unless you turn them on.
+          </p>
+        </section>
+
+        <section id="personal-information" aria-labelledby="personal-information-title">
+          <h2 id="personal-information-title">3. Personal Information</h2>
+          <p>
+            You may enter the following into the app. It is stored only in the app’s local database on your device:
+          </p>
+          <ul>
+            <li>Names of subscriptions, bills, and services.</li>
+            <li>Amounts, currency codes, billing cycles, and renewal and trial dates.</li>
+            <li>Payment-method labels (card, bank transfer, mobile wallet, carrier balance, cash, or other).</li>
+            <li>Notes, cancellation status, and reminder settings.</li>
+          </ul>
+          <p>
+            We do not receive this information. We cannot see your list, and the app does not send it to us.
+          </p>
+        </section>
+
+        <section id="automatically-collected" aria-labelledby="automatically-collected-title">
+          <h2 id="automatically-collected-title">4. Automatically Collected Information</h2>
+          <p>
+            <strong>Anonymous usage events (optional).</strong> Anonymous usage stats are off by default. You can turn
+            them on during onboarding or in Settings, and you can turn them off at any time. When they are on, the app
+            uses Firebase Analytics to send only these events:
+          </p>
+          <ul>
+            {analyticsEvents.map((event) => <li>{event}</li>)}
+          </ul>
+          <p>
+            Event parameters are limited to the item kind, the billing-cycle unit, a three-letter currency code, yes or
+            no flags, and size buckets such as 1–5 or 6–20. Events do not include names, amounts, notes, or account
+            identifiers. The advertising ID is not collected. Turning collection off stops new events immediately.
+          </p>
+            <p>
+            <strong>Exchange-rate requests (optional).</strong> If you turn on live exchange rates, the app requests a
+            public US dollar rate table from open.er-api.com. That request does not include your subscription list,
+            names, amounts, notes, or any account identifier.
+          </p>
+            <p>
+            <strong>Reminders.</strong> Reminders are scheduled on your device with WorkManager. Lock-screen notification
+            text is generic.
+          </p>
+        </section>
+
+        <section id="how-we-use" aria-labelledby="how-we-use-title">
+          <h2 id="how-we-use-title">5. How We Use Information</h2>
+          <ul>
+            <li>To show your totals, renewals, trials, and reminders on your device.</li>
+            <li>To create and restore backup files and calendar files that you choose to save or share.</li>
+            <li>When you have opted in, to understand in aggregate which features are used, so the app can be improved.</li>
+            <li>When you have turned on live rates, to convert amounts only in the way you have set up.</li>
+          </ul>
+          <p>We do not use your list for advertising, profiling, or sale.</p>
+        </section>
+
+        <section id="storage-and-security" aria-labelledby="storage-and-security-title">
+          <h2 id="storage-and-security-title">6. Data Storage and Security</h2>
+          <p>
+            Your list is stored in the app’s local database on your phone. Renewal Keeper has no server that holds your
+            list. Optional biometric lock uses your phone’s own fingerprint, face unlock, or screen lock.
+          </p>
+          <p>
+            <strong>Backups are not encrypted.</strong> A backup file is plain JSON. Anyone who has the file can read
+            it. You choose where to save it, so keep it somewhere you trust.
+          </p>
+          <p>
+            Android Auto Backup may copy the app database to your own Google account. That copy is controlled by your
+            Google account settings and is not sent to us.
+          </p>
+          <p>
+            When analytics is on, data is sent to Firebase over encrypted connections.
+          </p>
+        </section>
+
+        <section id="cookies-and-tracking" aria-labelledby="cookies-and-tracking-title">
+          <h2 id="cookies-and-tracking-title">7. Cookies and Tracking</h2>
+          <p>
+            The Renewal Keeper app does not use cookies. It does not use advertising identifiers.
+          </p>
+          <p>
+            This website does not set cookies and does not load third-party trackers or advertising scripts.
+          </p>
+        </section>
+
+        <section id="third-party-services" aria-labelledby="third-party-services-title">
+          <h2 id="third-party-services-title">8. Third-Party Services</h2>
+          <ul>
+            <li>
+              <strong>Firebase Analytics (Google).</strong> Used only if you opt in, for the events listed in section 4.
+            </li>
+            <li>
+              <strong>open.er-api.com.</strong> Used only if you turn on live exchange rates. It receives a request for
+              the public USD rate table and no subscription data.
+            </li>
+            <li>
+              <strong>Google Android services.</strong> Auto Backup, if enabled on your device, copies the app database
+              to your Google account under Google’s own terms.
+            </li>
+            <li>
+              <strong>Google Play.</strong> Distributes the app.
+            </li>
+          </ul>
+          <p>Each of these services has its own privacy policy, which applies to the data it handles.</p>
+        </section>
+
+        <section id="data-sharing" aria-labelledby="data-sharing-title">
+          <h2 id="data-sharing-title">9. Data Sharing</h2>
+          <p>
+            We do not sell your information. We do not share your subscription list with anyone, because we do not hold
+            it. When you have opted in to analytics, the anonymous events listed in section 4 are processed by Firebase
+            Analytics on our behalf.
+          </p>
+        </section>
+
+        <section id="data-retention" aria-labelledby="data-retention-title">
+          <h2 id="data-retention-title">10. Data Retention</h2>
+          <ul>
+            <li>
+              <strong>On your device:</strong> the list stays until you delete items, use Delete all data in Settings,
+              or uninstall the app.
+            </li>
+            <li>
+              <strong>Backup files:</strong> kept wherever you saved them. We do not hold copies.
+            </li>
+            <li>
+              <strong>Anonymous analytics:</strong> retained by Firebase under Google’s
+              settings. Turning analytics off stops new events.
+            </li>
+          </ul>
+        </section>
+
+        <section id="user-privacy-rights" aria-labelledby="user-privacy-rights-title">
+          <h2 id="user-privacy-rights-title">11. User Privacy Rights</h2>
+          <p>Because your list stays on your device, you control it directly:</p>
+          <ul>
+            <li>View, edit, or delete any item in the app.</li>
+            <li>Export your list to a backup file, or to a calendar file, at any time.</li>
+            <li>Turn anonymous analytics on or off in Settings. Turning it off stops new events immediately.</li>
+            <li>Turn live exchange rates on or off in Settings.</li>
+            <li>Delete all data from Settings, or uninstall the app.</li>
+          </ul>
+        </section>
+
+        <section id="international-transfers" aria-labelledby="international-transfers-title">
+          <h2 id="international-transfers-title">12. International Data Transfers</h2>
+          <p>
+            This applies only if you opt in to analytics or turn on live exchange rates. Firebase Analytics and
+            open.er-api.com may process requests on servers outside your country.
+          </p>
+          <p>Your subscription list itself is not transferred, because it stays on your device.</p>
+        </section>
+
+        <section id="children" aria-labelledby="children-title">
+          <h2 id="children-title">13. Children</h2>
+          <p>
+            Renewal Keeper is not directed at children under 13, and we do not knowingly collect personal information
+            from them.
+          </p>
+        </section>
+
+        <section id="policy-changes" aria-labelledby="policy-changes-title">
+          <h2 id="policy-changes-title">14. Policy Changes</h2>
+          <p>
+            We may update this policy. When we do, we will change the “Last updated” date at the top of this page and
+            describe material changes.
+          </p>
+        </section>
+
+      </article>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .policy-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: 1.25rem 0 0;
+    font-size: 0.9rem;
+    color: var(--subtle);
+  }
+
+  .policy-meta strong {
+    color: var(--ink);
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 15rem minmax(0, 44rem);
+    gap: clamp(2rem, 1.5rem + 2vw, 4rem);
+    justify-content: start;
+  }
+
+  .toc {
+    position: sticky;
+    top: 5.5rem;
+    align-self: start;
+    font-size: 0.9rem;
+  }
+
+  .toc h2 {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--subtle);
+    margin-bottom: 0.75rem;
+  }
+
+  .toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .toc li + li {
+    margin-top: 0;
+  }
+
+  .toc a {
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+    padding: 0.35rem 0.5rem;
+    margin-inline: -0.5rem;
+    border-radius: var(--radius-sm);
+    color: var(--muted);
+    text-decoration: none;
+    line-height: 1.35;
+  }
+
+  .toc a:hover {
+    color: var(--primary);
+    background: var(--bg-elevated);
+  }
+
+  .toc-num {
+    min-width: 1.4rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--subtle);
+  }
+
+  .policy {
+    max-width: 44rem;
+    min-width: 0;
+  }
+
+  .policy section {
+    scroll-margin-top: 5.5rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .policy section:last-child {
+    border-bottom: 0;
+  }
+
+  .policy h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .policy p,
+  .policy li {
+    font-size: 1rem;
+  }
+
+  .policy ul {
+    padding-left: 1.25rem;
+  }
+
+  .policy strong {
+    color: var(--ink);
+  }
+
+  .policy code {
+    font-size: 0.9em;
+  }
+
+  @media (max-width: 960px) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr);
+      justify-content: stretch;
+    }
+
+    .toc {
+      position: static;
+      padding: 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+
+    .toc ol {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 960px) {
+    .toc ol {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,110 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/" aria-label="Renewal Keeper home">
+        <img src="/favicon.svg" width="28" height="28" alt="" aria-hidden="true" />
+        <span>Renewal Keeper</span>
+      </a>
+      <p>A private list for subscriptions, bills, and free trials. Your list stays on your phone.</p>
+    </div>
+
+    <nav aria-label="Footer">
+      <h2 class="footer-heading">Pages</h2>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/support">Support</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-label="On this page">
+      <h2 class="footer-heading">Explore</h2>
+      <ul>
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#how-it-works">How it works</a></li>
+        <li><a href="/#showcase">Screens</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; {year} Renewal Keeper. All rights reserved.</p>
+    <p>No account. No bank access. Your subscription list is never sent to us.</p>
+  </div>
+</footer>
+
+<style>
+  .footer-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding-bottom: 2.5rem;
+  }
+
+  .footer-brand p {
+    margin-top: 0.9rem;
+    max-width: 22rem;
+    font-size: 0.95rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 650;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .brand img {
+    border-radius: 8px;
+  }
+
+  .footer-heading {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 0.9rem;
+    font-weight: 600;
+  }
+
+  .footer-grid ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-grid li + li {
+    margin-top: 0.6rem;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.875rem;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    color: var(--subtle);
+  }
+
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
