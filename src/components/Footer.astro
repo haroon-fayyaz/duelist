@@ -5,8 +5,8 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <a class="brand" href="/" aria-label="DueList home">
-        <img src="/favicon.svg" width="28" height="28" alt="" aria-hidden="true" />
+      <a class="brand" href={`${import.meta.env.BASE_URL}`} aria-label="DueList home">
+        <img src={`${import.meta.env.BASE_URL}favicon.svg`} width="28" height="28" alt="" aria-hidden="true" />
         <span>DueList</span>
       </a>
       <p>A private list for subscriptions, bills, and free trials. Your list stays on your phone.</p>
@@ -15,18 +15,18 @@ const year = new Date().getFullYear();
     <nav aria-label="Footer">
       <h2 class="footer-heading">Pages</h2>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/support">Support</a></li>
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}`}>Home</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}support`}>Support</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}privacy-policy`}>Privacy Policy</a></li>
       </ul>
     </nav>
 
     <nav aria-label="On this page">
       <h2 class="footer-heading">Explore</h2>
       <ul>
-        <li><a href="/#features">Features</a></li>
-        <li><a href="/#how-it-works">How it works</a></li>
-        <li><a href="/#showcase">Screens</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}#features`}>Features</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}#how-it-works`}>How it works</a></li>
+        <li><a href={`${import.meta.env.BASE_URL}#showcase`}>Screens</a></li>
       </ul>
     </nav>
   </div>

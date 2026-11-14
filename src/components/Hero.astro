@@ -12,8 +12,8 @@
         including PKR.
       </p>
       <div class="btn-row">
-        <a class="btn btn--primary" href="/#get-app">Get the app</a>
-        <a class="btn btn--ghost" href="/#features">See what it does</a>
+        <a class="btn btn--primary" href={`${import.meta.env.BASE_URL}#get-app`}>Get the app</a>
+        <a class="btn btn--ghost" href={`${import.meta.env.BASE_URL}#features`}>See what it does</a>
       </div>
       <p class="trust">No account. No bank access. Your subscription list is never sent to us.</p>
     </div>
@@ -21,7 +21,7 @@
     <div class="hero-visual" aria-hidden="false">
       <div class="device">
         <img
-          src="/images/overview.png"
+          src={`${import.meta.env.BASE_URL}images/overview.png`}
           width="720"
           height="1600"
           alt="DueList Overview screen showing PKR and USD monthly totals, a trial ending in two days, and the list of renewals due this week."

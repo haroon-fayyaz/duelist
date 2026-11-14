@@ -137,7 +137,7 @@ const steps = [
         <figure class="shot">
           <div class="device">
             <img
-              src="/images/overview.png"
+              src={`${import.meta.env.BASE_URL}images/overview.png`}
               width="720"
               height="1600"
               loading="lazy"
@@ -154,7 +154,7 @@ const steps = [
         <figure class="shot">
           <div class="device">
             <img
-              src="/images/subscriptions.png"
+              src={`${import.meta.env.BASE_URL}images/subscriptions.png`}
               width="720"
               height="1600"
               loading="lazy"
@@ -171,7 +171,7 @@ const steps = [
         <figure class="shot">
           <div class="device">
             <img
-              src="/images/settings.png"
+              src={`${import.meta.env.BASE_URL}images/settings.png`}
               width="720"
               height="1600"
               loading="lazy"
@@ -224,8 +224,8 @@ const steps = [
     heading="Start with the first renewal you want to remember."
     text="DueList is an Android app. The Google Play link will be added here when the app is available to download."
   >
-    <a class="btn btn--primary" href="/support">Get help</a>
-    <a class="btn btn--ghost" href="/privacy-policy">Read the privacy policy</a>
+    <a class="btn btn--primary" href={`${import.meta.env.BASE_URL}support`}>Get help</a>
+    <a class="btn btn--ghost" href={`${import.meta.env.BASE_URL}privacy-policy`}>Read the privacy policy</a>
   </CTA>
 </MainLayout>
 

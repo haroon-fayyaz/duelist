@@ -67,7 +67,7 @@ const faqs: FaqItem[] = [
   {
     question: 'Is anonymous usage data collected?',
     answer:
-      'Not unless you turn it on. Anonymous usage stats are off by default and can be switched on or off in Settings. When they are on, they never include names, amounts, notes, or account identifiers. See the <a href="/privacy-policy#analytics">privacy policy</a> for the full list.',
+      'Not unless you turn it on. Anonymous usage stats are off by default and can be switched on or off in Settings. When they are on, they never include names, amounts, notes, or account identifiers. See the <a href="' + import.meta.env.BASE_URL + 'privacy-policy#analytics">privacy policy</a> for the full list.',
   },
   {
     question: 'Does the app have a home-screen widget, app lock, or Urdu?',
@@ -212,7 +212,7 @@ const tips = [
   <section class="section section--alt" aria-labelledby="privacy-note-title">
     <div class="container prose">
       <h2 id="privacy-note-title">Your privacy while you get help</h2>
-      <p>DueList stores your list on this device and does not run an account system. This page does not ask for personal information, and it has no forms. Read the <a href="/privacy-policy">privacy policy</a> for what the app does and does not send.</p>
+      <p>DueList stores your list on this device and does not run an account system. This page does not ask for personal information, and it has no forms. Read the <a href={`${import.meta.env.BASE_URL}privacy-policy`}>privacy policy</a> for what the app does and does not send.</p>
     </div>
   </section>
 </MainLayout>
