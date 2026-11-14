@@ -1,10 +1,15 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 
-// Set SITE_URL (for example https://example.com) at build time once the
-// production domain is known. Canonical and Open Graph URLs need it.
+// GitHub Pages. Override per repo via env (set in the workflow):
+//   SITE_URL=https://<user>.github.io   BASE_PATH=/<repo>
+// For a user/org site (<user>.github.io repo) or custom domain, set BASE_PATH=/
+const site = process.env.SITE_URL || 'https://haroonfayyaz17.github.io';
+const base = process.env.BASE_PATH || '/duelist';
+
 export default defineConfig({
+  site,
+  base,
   output: 'static',
-  site: process.env.SITE_URL || undefined,
-  trailingSlash: 'ignore',
+  trailingSlash: 'always',
+  build: { format: 'directory' },
 });
